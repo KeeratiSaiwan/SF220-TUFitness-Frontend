@@ -44,7 +44,7 @@ export default function PaymentPage() {
 
                 {/* Horizontal Card for Package Details */}
                 {selectedPackageDetails && (
-                    <div className={`max-w-3xl flex items-stretch border border-gray-300 rounded-md overflow-hidden shadow-sm min-h-[160px] text-white ${
+                    <div className={`max-w-xl flex items-stretch border border-gray-300 rounded-md overflow-hidden shadow-sm min-h-[180px] text-white ${
                         selectedPackage === 'monthly' ? 'bg-[#CD7F32]' :
                         selectedPackage === 'six-month' ? 'bg-[#A9A9A9]' :
                         selectedPackage === 'yearly' ? 'bg-[#E8BD4B]' :
@@ -62,7 +62,7 @@ export default function PaymentPage() {
                             />
                         </div>
                         <div className="w-2/3 p-4 flex flex-col justify-center w-full md:w-2/3">
-                            <h3 className="text-lg font-bold mb-2">{selectedPackageDetails.name}</h3>
+                            <h3 className="text-3xl font-bold mb-3">{selectedPackageDetails.name}</h3>
                             <p className="text-xl font-semibold mb-2">฿{selectedPackageDetails.price}</p>
                             <p className="text-sm whitespace-pre-wrap">{selectedPackageDetails.description}</p>
                         </div>
@@ -92,11 +92,11 @@ export default function PaymentPage() {
 
                 {/* Payment Input Fields (Conditional) */}
                 {selectedPaymentMethod && (
-                    <div className="bg-[#F1F1F3] p-4 rounded-md">
+                    <div className="bg-[#F1F1F3] p-4 rounded-md max-w-xl">
                         {selectedPaymentMethod === 'credit_card' && (
                             <div>
                                 <div className="mb-4">
-                                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700">
+                                    <label htmlFor="card-number" className="block text-sm font-medium">
                                         หมายเลขบัตร
                                     </label>
                                     <input
@@ -108,7 +108,7 @@ export default function PaymentPage() {
                                 </div>
                                 <div className="grid grid-cols-2 gap-4 mb-4">
                                     <div>
-                                        <label htmlFor="expiry-date" className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="expiry-date" className="block text-sm font-medium">
                                             วันหมดอายุ (MM/YY)
                                         </label>
                                         <input
@@ -119,7 +119,7 @@ export default function PaymentPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="cvc" className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="cvc" className="block text-sm font-medium">
                                             CVC
                                         </label>
                                         <input
@@ -131,7 +131,7 @@ export default function PaymentPage() {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="card-name" className="block text-sm font-medium text-gray-700">
+                                    <label htmlFor="card-name" className="block text-sm font-medium">
                                         ชื่อผู้ถือบัตร
                                     </label>
                                     <input
@@ -147,8 +147,8 @@ export default function PaymentPage() {
                             <div>
                                 <p className="text-lg font-semibold mb-2">พร้อมเพย์</p>
                                 {/* Replace with actual PromptPay details */}
-                                <p className="text-gray-700">หมายเลขพร้อมเพย์: XXX-XXX-XXXX</p>
-                                <p className="text-gray-700">ชื่อบัญชี: [ชื่อเจ้าของบัญชี]</p>
+                                <p className="">หมายเลขพร้อมเพย์: XXX-XXX-XXXX</p>
+                                <p className="">ชื่อบัญชี: [ชื่อเจ้าของบัญชี]</p>
                             </div>
                         )}
                     </div>
@@ -161,7 +161,7 @@ export default function PaymentPage() {
                 <div className="text-[#C30E2F] text-2xl font-semibold mb-2">
                     ฿{selectedPackageDetails ? selectedPackageDetails.price : '0.00'} {/* Display selected package price */}
                 </div>
-                <div className="text-gray-700 text-sm mb-4">
+                <div className="text-sm mb-4">
                     ส่วนลด - 0 บาท {/* Placeholder for discount */}
                 </div>
                 <div className="mb-4">
@@ -171,7 +171,7 @@ export default function PaymentPage() {
                     <input
                         type="text"
                         id="coupon"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                        className="mt-1 block max-w-md border border-gray-300 rounded-md shadow-sm p-2"
                         value={couponCode}
                         onChange={(e) => setCouponCode(e.target.value)}
                     />
@@ -181,7 +181,7 @@ export default function PaymentPage() {
             {/* Confirmation Button */}
             <div className="flex justify-end">
                 <button className="px-6 py-3 bg-[#C30E2F] text-white text-lg font-semibold rounded-md">
-                    ยืนยันสมัคร
+                    ยืนยันการสมัคร
                 </button>
             </div>
         </div>

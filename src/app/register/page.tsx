@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+
 
 export default function RegisterPage() {
     const [mode, setMode] = useState('register'); // 'register' or 'login'
@@ -10,6 +12,7 @@ export default function RegisterPage() {
         setMode(newMode);
     };
 
+    const router = useRouter();
     return (
         <div
             className="min-h-screen bg-cover bg-center flex items-center justify-center px-4"
@@ -162,7 +165,7 @@ export default function RegisterPage() {
                             </div>
                         </div>
                         <div className="flex justify-end mt-6">
-                            <button className="px-4 py-2 bg-[#C30E2F] text-white rounded-md">
+                            <button className="px-4 py-2 bg-[#C30E2F] text-white rounded-md" onClick={() => router.push('/payment')}>
                                 ถัดไป
                             </button>
                         </div>
