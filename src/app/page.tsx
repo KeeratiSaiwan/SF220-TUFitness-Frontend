@@ -12,8 +12,7 @@ export default function HomePage() {
       <MembershipSection />
       <footer className="bg-foreground text-background py-8 text-center">
         <div className="container mx-auto px-4 md:px-6">
-          <p className="text-sm">&copy; {new Date().getFullYear()} TUFitness. All rights reserved.</p>
-          <p className="text-xs mt-1">Designed by an Expert AI Designer</p>
+          <p className="text-sm">&copy; {new Date().getFullYear()} TUFitness. By AraiMaiLuu Group</p>
         </div>
       </footer>
     </>

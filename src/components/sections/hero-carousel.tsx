@@ -51,16 +51,6 @@ export default function HeroCarousel() {
           <div className="absolute inset-0 bg-black/30"></div> {/* Optional overlay */}
         </div>
       ))}
-      
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center text-white p-4 bg-black/20 rounded-lg backdrop-blur-sm">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Welcome to TUFitness</h1>
-          <p className="text-lg md:text-2xl mb-6 drop-shadow-md">Achieve Your Fitness Goals With Us</p>
-          <Button size="lg" variant="default" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Join Now
-          </Button>
-        </div>
-      </div>
 
       <Button
         variant="outline"
