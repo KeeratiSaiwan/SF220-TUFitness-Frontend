@@ -1,6 +1,9 @@
+"use client";
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { useRouter } from 'next/navigation';
 import type { StaticImageData } from 'next/image';
 
 type PackageId = 'monthly' | 'six-month' | 'yearly';
@@ -15,6 +18,8 @@ interface MembershipCardProps {
   description: string[];
  buttonText: string;
  popular?: boolean;
+
+
 }
 
 export default function MembershipCard({
@@ -28,6 +33,7 @@ export default function MembershipCard({
   description,
   buttonText,
 }: MembershipCardProps) {
+  const router = useRouter();
  const cardClassName = `flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border-border ${
   packageId === 'monthly' ? 'bg-[#CD7F32]' :
   packageId === 'six-month' ? 'bg-[#A9A9A9]' :
@@ -70,7 +76,7 @@ export default function MembershipCard({
         </ul>
       </CardContent>
       <CardFooter className="p-6 pt-0 mt-auto">
-        <Button size="lg" className="w-full">
+        <Button size="lg" className="w-full" onClick={() => router.push('/register')}>
           {buttonText}
         </Button>
       </CardFooter>
