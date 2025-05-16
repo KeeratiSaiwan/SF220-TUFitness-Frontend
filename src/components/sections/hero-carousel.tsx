@@ -6,9 +6,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const images = [
-  { src: 'https://placehold.co/1920x700.png', alt: 'Fitness hero image 1', dataAiHint: 'gym workout' },
-  { src: 'https://placehold.co/1920x700.png', alt: 'Fitness hero image 2', dataAiHint: 'yoga class' },
-  { src: 'https://placehold.co/1920x700.png', alt: 'Fitness hero image 3', dataAiHint: 'weightlifting equipment' },
+  { src: '/images/5.jpg', alt: 'dumbbell rack', dataAiHint: 'dumbbell rack' },
+  { src: '/images/7.jpg', alt: 'treadmill', dataAiHint: 'treadmill' },
+  { src: '/images/10.jpg', alt: 'weightlifting equipment', dataAiHint: 'weightlifting equipment' },
+  { src: '/images/11.jpg', alt: 'weightlifting equipment', dataAiHint: 'weightlifting equipment' },
+  { src: '/images/12.jpg', alt: 'locker room', dataAiHint: 'locker room' },
 ];
 
 const SLIDE_INTERVAL = 15000; // 15 seconds

@@ -21,13 +21,10 @@ export default function OpeningHoursSection() {
               </p>
             ))}
           </div>
-          <div className="md:w-1/2 text-center md:text-right">
+          <div className="md:w-1/2 md:h-1/2 text-center md:text-right">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               ตารางเวลาการให้บริการ
             </h1>
-            <p className="text-lg md:text-xl text-white/90">
-              We are committed to providing you with ample opportunities to work on your fitness. Check our flexible schedule.
-            </p>
           </div>
         </div>
       </div>
