@@ -1,13 +1,50 @@
 'use client';
 
-import Link from 'next/link'; // Import Link for navigation
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SummaryPage() {
-  // Mock data (replace with actual data)
-  const membershipId = '#12345678';
-  const startDate = '17 พค 2568';
-  const endDate = '17 มิย 2568';
-  const qrCodeUrl = 'https://media.istockphoto.com/id/1347277582/vector/qr-code-sample-for-smartphone-scanning-on-white-background.jpg?s=612x612&w=0&k=20&c=6e6Xqb1Wne79bJsWpyyNuWfkrUgNhXR4_UYj3i_poc0='; // Mock QR code image
+  const router = useRouter();
+  const [subscription, setSubscription] = useState<any>(null);
+  const [payment, setPayment] = useState<any>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/register');
+        return;
+      }
+
+      // Fetch latest subscription for this user
+      fetch(`http://localhost:3000/api/subscriptions`)
+        .then(res => res.json())
+        .then(subs => {
+          // Find the latest subscription for this user
+          const userSubs = subs.filter((s: any) => String(s.customer) === String(token));
+          if (userSubs.length === 0) return;
+          // Sort by id DESC to get the latest
+          const latestSub = userSubs.sort((a: any, b: any) => b.id - a.id)[0];
+          setSubscription(latestSub);
+
+          // Fetch payment info for this subscription
+          if (latestSub && latestSub.payment) {
+            fetch(`http://localhost:3000/api/payments/${latestSub.payment}`)
+              .then(res => res.json())
+              .then(setPayment);
+          }
+        });
+    }
+  }, [router]);
+
+  // Fallbacks if not loaded yet
+  const membershipId = subscription ? `#${subscription.id}` : '...';
+  const startDate = payment ? new Date(payment.date).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' }) : '...';
+  const endDate = subscription ? new Date(subscription.end_date).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' }) : '...';
+  const qrCodeUrl = subscription
+    ? `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(subscription.id)}`
+    : 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=...';
 
   return (
     <div className="container mx-auto px-4 py-8">

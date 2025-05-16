@@ -1,3 +1,4 @@
+"use client";
 import HeroCarousel from '@/components/sections/hero-carousel';
 import ServicesSection from '@/components/sections/services-section';
 import OpeningHoursSection from '@/components/sections/opening-hours-section';
