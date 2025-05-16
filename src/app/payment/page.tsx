@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
@@ -6,6 +7,8 @@ export default function PaymentPage() {
     const [selectedPackage, setSelectedPackage] = useState(''); // State for selected package
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(''); // State for selected payment method
     const [couponCode, setCouponCode] = useState(''); // State for coupon code
+
+    const router = useRouter();
 
     // Mock data for packages (replace with your actual data fetching)
     const packages = [
@@ -180,7 +183,8 @@ export default function PaymentPage() {
 
             {/* Confirmation Button */}
             <div className="flex justify-end">
-                <button className="px-6 py-3 bg-[#C30E2F] text-white text-lg font-semibold rounded-md">
+                <button className="px-6 py-3 bg-[#C30E2F] text-white text-lg font-semibold rounded-md"
+                        onClick={() => router.push('/summary')}>
                     ยืนยันการสมัคร
                 </button>
             </div>
